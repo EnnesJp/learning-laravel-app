@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('series', SeriesController::class);
 
-Route::post('series/create', 'SeriesController@store');
+Route::post('series/create', 'SeriesController@store')->middleware('auth');
 
-Route::post('series/{id}', 'SeriesController@destroy');
+Route::post('series/{id}', 'SeriesController@destroy')->middleware('auth');
 
 Route::get('series/{id}/temporadas', 'TemporadasController@index');
 
-Route::post('/series/{id}/editaNome', 'SeriesController@editaNome');
+Route::post('/series/{id}/editaNome', 'SeriesController@editaNome')->middleware('auth');
 
 Route::get('/temporada/{temporada}/episodios', 'EpisodiosController@index');
 
@@ -35,6 +35,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+});

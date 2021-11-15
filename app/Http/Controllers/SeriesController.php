@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\{Serie, Temporada , Episodio};
 use App\Services\{CriadorDeSeries, RemovedorDeSeries};
+use Illuminate\Support\Facades\Auth;
 
 class SeriesController extends Controller
 {
@@ -26,8 +27,15 @@ class SeriesController extends Controller
         return view('series.index', compact('series', 'color', 'mensagem'));
     }
 
+    public function check_auth(){
+        if (!Auth::check()) {
+            return redirect('home');
+        }
+    }
+
     public function create()
     {
+        $this->check_auth();
         return view('series.create');
     }
 
@@ -51,6 +59,7 @@ class SeriesController extends Controller
 
     public function destroy(Request $request, RemovedorDeSeries $removedordeserie)
     {
+        $this->check_auth();
         $nomeSerie = $removedordeserie->removerSerie($request->id);
 
         $request->session()
@@ -63,6 +72,7 @@ class SeriesController extends Controller
 
     public function editaNome($id, Request $request)
     {
+        $this->check_auth();
         $novoNome = $request->nome;
         $serie = Serie::find($id);
         $serie->nome = $novoNome;

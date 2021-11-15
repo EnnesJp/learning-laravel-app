@@ -22,6 +22,7 @@ class Temporada extends Model
         return $this->belongsTo(Serie::class);
     }
 
+    /*
     public function getEpisodiosAssistidos(): Collection
     {
         return $this->episodios->filter(function (Episodio $episodio)
@@ -29,4 +30,5 @@ class Temporada extends Model
             return $episodio->assistido;
         });
     }
+    */
 }

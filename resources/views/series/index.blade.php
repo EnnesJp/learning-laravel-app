@@ -3,9 +3,13 @@
 @section('conteudo')
 <main class="container">
     @include('mensagem', ['mensagem' => $mensagem])
-    <a href="series/create" class="btn btn-dark mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalLive">Adicionar</a>
     <div class="my-3 p-3 bg-body rounded shadow-sm" style="position: relative;">
-        <h6 class="border-bottom pb-2 mb-0">Para Assistir</h6>
+        <div class="d-flex justify-content-between border-bottom pb-2 mb-0 align-items-center">
+            <h6 class=" pb-2 mb-0">Para Assistir</h6>
+            @auth
+            <a href="series/create" class="btn btn-dark btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalLive">Adicionar</a>
+            @endauth
+        </div>
         @foreach ($series as $key => $serie)
             <div class="d-flex text-muted pt-3">
                 <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="{{ $color[$key] }}"/></svg>
@@ -23,12 +27,15 @@
                     </div>
                 </div>
                 <div class="d-flex" style="position: absolute; right: 1.3%;">
+                    @auth
                     <button class="btn btn-info btn-sm mr-2" onclick="toggleInput({{ $serie->id }})">
                         <i class="fas fa-edit"></i>
                     </button>
+                    @endauth
                     <a href="/series/{{ $serie->id }}/temporadas" class="btn btn-info btn-sm mr-2">
                         <i class="fas fa-info"></i>
                     </a>
+                    @auth
                     <form method="post" action="/series/{{ $serie->id }}"
                         onsubmit="return confirm('Tem certeza que deseja remover a série {{ addslashes($serie->nome) }}?')">
                         @csrf
@@ -36,6 +43,7 @@
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
+                    @endauth
                 </div>
             </div>
         @endforeach

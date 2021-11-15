@@ -15,7 +15,9 @@
                 </div>
                 @endforeach
             <div>
+            @auth
             <button class="btn btn-primary mt-2 mb-2">Salvar</button>
+            @endauth
         </form>
     </main>
 @endsection

@@ -4,6 +4,7 @@
     <main class="container">
         @include('mensagem', ['mensagem' => $mensagem])
         <form action="/temporada/{{ $temporadaId }}/episodios/assistir" method="post">
+            @csrf
             <div class="my-3 p-3 bg-body rounded shadow-sm" style="position: relative;">
                 <h6 class="border-bottom pb-2 mb-0">Episodios</h6>
                 @foreach($episodios as $episodio)
@@ -16,7 +17,7 @@
                 @endforeach
             <div>
             @auth
-            <button class="btn btn-primary mt-2 mb-2">Salvar</button>
+                <button class="btn btn-primary mt-2 mb-2">Salvar</button>
             @endauth
         </form>
     </main>

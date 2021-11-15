@@ -11,7 +11,7 @@
                         <strong class="d-block text-gray-dark">{{ $temporada->numero }}° Temporada</strong>
                     </a>
                     <div class="badge badge-secondary" style="position: absolute; right: 1.3%;">
-                        0 /{{ $temporada->episodios->count() }}
+                        {{ $temporada->getEpisodiosAssistidos()->count() }}/ {{ $temporada->episodios->count() }}
                     </div>
                 </div>
             </div>

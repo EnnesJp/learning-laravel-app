@@ -34,7 +34,7 @@ class CriadorDeSeries
         // Cria temporadas de cada série
         for($i =1; $i <= $qtdTemporadas; $i++){
             $temporada = $serie->temporadas()->create(['numero' => $i]);
-             //$this->criarEpisodios($qtdEpisodios, $temporada, $i);
+            $this->criarEpisodios($qtdEpisodios, $temporada);
         }
     }
 
@@ -43,9 +43,9 @@ class CriadorDeSeries
      * @param Temporada $temporada
      * @param int $indice
      */
-    public function criarEpisodios(int $qtdEpisodios, Temporada $temporada, int $indice){
+    public function criarEpisodios(int $qtdEpisodios, Temporada $temporada){
         // Cria episódios de cada temporada
-        for($j =1; $indice <= $qtdEpisodios; $j++){
+        for($j =1; $j <= $qtdEpisodios; $j++){
             $temporada->episodios()->create(['numero' => $j]);
         }
     }

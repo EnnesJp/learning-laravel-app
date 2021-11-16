@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use App\Models\{Serie, Temporada, Episodio};
 
 class TemporadaTest extends TestCase
@@ -31,18 +31,18 @@ class TemporadaTest extends TestCase
         $this->temporada = $temporada;
     }
 
-    // public function test_BuscaPorEpisodiosAssistidos()
-    // {
-    //    $episodiosAssistidos = $this->temporada->getEpisodiosAssistidos();
-    //    $this->assertCount(2, $episodiosAssistidos);
-    //     foreach ($episodiosAssistidos as $episodio) {
-    //         $this->assertTrue($episodio->assistido);
-    //     }
-    // }
+    public function test_BuscaPorEpisodiosAssistidos()
+    {
+       $episodiosAssistidos = $this->temporada->getEpisodiosAssistidos();
+       $this->assertCount(2, $episodiosAssistidos);
+        foreach ($episodiosAssistidos as $episodio) {
+            $this->assertTrue($episodio->assistido);
+        }
+    }
 
-    // public function test_BuscaTodosOsEpisodios()
-    // {
-    //     $episodios = $this->temporada->episodios;
-    //     $this->assertCount(3, $episodios);
-    // }
+    public function test_BuscaTodosOsEpisodios()
+    {
+        $episodios = $this->temporada->episodios;
+        $this->assertCount(3, $episodios);
+    }
 }

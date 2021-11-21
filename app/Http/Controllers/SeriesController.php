@@ -13,7 +13,8 @@ class SeriesController extends Controller
     public function index(Request $request)
     {
         // Busca cindo ultimas series que estão no banco
-        $series = Serie::query()->orderBy('id','desc')->take(5)->get();
+        $series = Serie::query()->where('finalizada', '=', false)->orderBy('id','desc')->take(5)->get();
+        $seriesAssistidas = Serie::query()->where('finalizada', '=', true)->orderBy('id','desc')->take(5)->get();
         // Define as cores de cada to;pico de filme
         // for($index = 0; $index < 5; $index++){
         //     $color[]  = $this->random_color();
@@ -24,7 +25,7 @@ class SeriesController extends Controller
         $color[3] = '#ADFF2F';
         $color[4] = '#00FF00';
         $mensagem = $request->session()->get('mensagem');
-        return view('series.index', compact('series', 'color', 'mensagem'));
+        return view('series.index', compact('series', 'seriesAssistidas', 'color', 'mensagem'));
     }
 
     public function check_auth(){
@@ -76,6 +77,22 @@ class SeriesController extends Controller
         $novoNome = $request->nome;
         $serie = Serie::find($id);
         $serie->nome = $novoNome;
+        $serie->save();
+    }
+
+    public function finalizaSerie($id, Request $request)
+    {
+        $this->check_auth();
+        $serie = Serie::find($id);
+        $serie->temporadas->each(function (Temporada $temporada){
+            $temporada->episodios->each(function (Episodio $episodio){
+                if(!$episodio->assistido){
+                    $episodio->assistido = true;
+                    $episodio->save();
+                }
+            });
+        });
+        $serie->finalizada = true;
         $serie->save();
     }
 }

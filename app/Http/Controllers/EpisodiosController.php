@@ -33,5 +33,4 @@ class EpisodiosController extends Controller
 
         return redirect()->back();
     }
-
 }

@@ -27,6 +27,8 @@ Route::get('series/{id}/temporadas', 'TemporadasController@index');
 
 Route::post('/series/{id}/editaNome', 'SeriesController@editaNome')->middleware('auth');
 
+Route::post('/series/{id}/finalizaSerie', 'SeriesController@finalizaSerie')->middleware('auth');
+
 Route::get('/temporada/{temporada}/episodios', 'EpisodiosController@index');
 
 Route::post('/temporada/{temporada}/episodios/assistir', 'EpisodiosController@assistir');

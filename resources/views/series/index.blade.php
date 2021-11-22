@@ -7,7 +7,7 @@
         <div class="d-flex justify-content-between border-bottom pb-2 mb-0 align-items-center">
             <h6 class=" pb-2 mb-0">Para Assistir</h6>
             @auth
-            <a href="series/create" class="btn btn-dark btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalLive">Adicionar</a>
+            <a id='adicionar' href="series/create" class="btn btn-dark btn-sm mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalLive">Adicionar</a>
             @endauth
         </div>
         @foreach ($series as $key => $serie)

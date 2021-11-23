@@ -14,11 +14,11 @@ class CriadorDeSeries
      * @param int $qtdEpisodios
      * @return Serie
      */
-    public function criarSerie(string $nomeSerie, string $descricao, int $qtdTemporadas, int $qtdEpisodios) : Serie {
+    public function criarSerie(string $nomeSerie, string $descricao, int $qtdTemporadas, int $qtdEpisodios, string $genero) : Serie {
 
         DB::beginTransaction();
         // Cria nova serie no banco a partir do $request
-        $serie = Serie::create(['nome' => $nomeSerie, 'descricao' => $descricao, 'assistido' => false]);
+        $serie = Serie::create(['nome' => $nomeSerie, 'descricao' => $descricao, 'assistido' => false, 'genero' => $genero]);
         $this->criarTemporadas($qtdTemporadas, $serie, $qtdEpisodios);
         DB::commit();
 

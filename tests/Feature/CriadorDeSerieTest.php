@@ -22,7 +22,8 @@ class CriadorDeSerieTest extends TestCase
         $criadorDeSerie = new CriadorDeSeries();
         $nomeSerie = 'Nome de teste';
         $descricaoSerie = 'Descricao de teste';
-        $serieCriada = $criadorDeSerie->criarSerie($nomeSerie, $descricaoSerie, 1, 1);
+        $generoSerie = 'Drama';
+        $serieCriada = $criadorDeSerie->criarSerie($nomeSerie, $descricaoSerie, 1, 1, $generoSerie);
 
         $this->assertInstanceOf(Serie::class, $serieCriada);
         $this->assertDatabaseHas('series', ['nome' => $nomeSerie]);

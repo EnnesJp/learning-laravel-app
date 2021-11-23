@@ -19,7 +19,7 @@ class CriadorDeSeries
 
         DB::beginTransaction();
         // Cria nova serie no banco a partir do $request
-        $serie = Serie::create(['nome' => $nomeSerie, 'descricao' => $descricao, 'assistido' => false, 'genero' => $genero]);
+        $serie = Serie::create(['nome' => $nomeSerie, 'descricao' => $descricao, 'finalizada' => false, 'genero' => $genero]);
         $this->criarTemporadas($qtdTemporadas, $serie, $qtdEpisodios);
         DB::commit();
 

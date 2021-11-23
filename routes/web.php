@@ -41,3 +41,11 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
 });
+
+Route::get('/email', function () {
+    return new \App\Mail\NovaSerie(
+        'Arrow',
+        5,
+        10
+    );
+});

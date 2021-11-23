@@ -17,7 +17,7 @@ class CriadorDeSerieTest extends TestCase
      *
      * @return void
      */
-    public function test_CriarSerie()
+    public function testCriarSerie()
     {
         $criadorDeSerie = new CriadorDeSeries();
         $nomeSerie = 'Nome de teste';

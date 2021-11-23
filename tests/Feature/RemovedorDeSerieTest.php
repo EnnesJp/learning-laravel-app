@@ -36,7 +36,7 @@ class RemovedorDeSerieTest extends TestCase
      *
      * @return void
      */
-    public function test_RemoverUmaSerie()
+    public function testRemoverUmaSerie()
     {
         $this->assertDatabaseHas('series', ['id' => $this->serie->id]);
         $removedorDeSerie = new RemovedorDeSeries();

@@ -31,16 +31,26 @@ class TemporadaTest extends TestCase
         $this->temporada = $temporada;
     }
 
-    public function test_BuscaPorEpisodiosAssistidos()
+    /**
+     * Executa testes para buscar episodios assistidos.
+     *
+     * @return void
+     */
+    public function testBuscaPorEpisodiosAssistidos()
     {
-       $episodiosAssistidos = $this->temporada->getEpisodiosAssistidos();
-       $this->assertCount(2, $episodiosAssistidos);
+        $episodiosAssistidos = $this->temporada->getEpisodiosAssistidos();
+        $this->assertCount(2, $episodiosAssistidos);
         foreach ($episodiosAssistidos as $episodio) {
             $this->assertTrue($episodio->assistido);
         }
     }
 
-    public function test_BuscaTodosOsEpisodios()
+    /**
+     * Executa testes para buscar todos os episodios.
+     *
+     * @return void
+     */
+    public function testBuscaTodosOsEpisodios()
     {
         $episodios = $this->temporada->episodios;
         $this->assertCount(3, $episodios);

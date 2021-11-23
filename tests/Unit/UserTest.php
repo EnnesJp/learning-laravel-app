@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Models\{Serie, Temporada, Episodio, User};
 
-class SerieTest extends TestCase
+class UserTest extends TestCase
 {
     private $user;
 
@@ -18,11 +18,14 @@ class SerieTest extends TestCase
     {
         parent::setUp();
         $user = new User();
+        $user->name = "Test User";
+
+        $this->user = $user;
     }
 
-    public function testBuscaTodasAsTemporadas()
+    public function testNameUser()
     {
-        $temporadas = $this->serie->temporadas;
-        $this->assertCount(3, $temporadas);
+        $userName = $this->user->name;
+        $this->assertCount(3, $userName);
     }
 }

@@ -15,7 +15,6 @@
 <body style="background-color:#C0C0C0">
     <nav class="navbar navbar-expand-lg shadow-sm navbar-dark bg-dark mb-2">
         <div class="container">
-            <a class="navbar-brand" href="/series"><i class="fas fa-film"></i>   Séries</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
+                    <a class="navbar-brand" href="/series"><i class="fas fa-film"></i>   Séries</a>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -32,13 +31,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a id="login" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a id="register" class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else

@@ -25,11 +25,11 @@
                 </div>
                 <div class="form-group mb-3 col col-2">
                     <label for="qtd_temporadas">N° Temporadas</label>
-                    <input type="number" class="form-control" name="qtd_temporadas" id="nome">
+                    <input type="number" class="form-control" name="qtd_temporadas" id="qtd_temporadas">
                 </div>
                 <div class="form-group mb-3 col col-2">
                     <label for="qtd_episodios">N° Episódios</label>
-                    <input type="number" class="form-control" name="qtd_episodios" id="nome">
+                    <input type="number" class="form-control" name="qtd_episodios" id="qtd_episodios">
                 </div>
             </div>
             <div class="form-group">

@@ -29,7 +29,8 @@ class RemovedorDeSerieTest extends TestCase
             'Descrição da série',
             1,
             1,
-            'action');
+            'action'
+        );
     }
 
     /**

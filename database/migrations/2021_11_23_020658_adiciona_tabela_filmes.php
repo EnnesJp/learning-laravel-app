@@ -18,6 +18,7 @@ class AdicionaTabelaFilmes extends Migration
             $table->string('nome');
             $table->string('descricao');
             $table->string('genero');
+            $table->string('assistido');
         });
     }
 

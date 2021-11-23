@@ -12,6 +12,7 @@ class CriadorDeSeries
      * @param string $descricao
      * @param int $qtdTemporadas
      * @param int $qtdEpisodios
+     * @param string $genero
      * @return Serie
      */
     public function criarSerie(string $nomeSerie, string $descricao, int $qtdTemporadas, int $qtdEpisodios, string $genero) : Serie {

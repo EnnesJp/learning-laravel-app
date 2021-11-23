@@ -15,7 +15,7 @@ class AdicionaCampoGenero extends Migration
     {
         Schema::table('series', function (Blueprint $table) {
             $table
-                ->string('gereno');
+                ->string('genero');
         });
     }
 
@@ -27,7 +27,7 @@ class AdicionaCampoGenero extends Migration
     public function down()
     {
         Schema::table('series', function (Blueprint $table) {
-            $table->dropColumn('gereno');
+            $table->dropColumn('genero');
         });
     }
 }

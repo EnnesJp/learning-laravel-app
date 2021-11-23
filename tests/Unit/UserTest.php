@@ -26,6 +26,6 @@ class UserTest extends TestCase
     public function testNameUser()
     {
         $userName = $this->user->name;
-        $this->assertCount(3, $userName);
+        $this->assertSame("Test User", $userName);
     }
 }

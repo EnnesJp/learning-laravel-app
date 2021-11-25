@@ -55,7 +55,7 @@
             "@php artisan key:generate --ansi"
         ],
         "up": "php artisan serve",
-        "teste": "vendor\bin\phpunit"
+        "teste": "phpunit"
     },
     "extra": {
         "laravel": {

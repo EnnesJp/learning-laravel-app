@@ -1,7 +1,13 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Project to learn Laravel Framework.",
+    "authors" : [
+        {
+            "name": "João Pedro B. Ennes",
+            "email": "joaopedroennes@outlook.com"
+        }
+    ],
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {

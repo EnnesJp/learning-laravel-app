@@ -41,4 +41,50 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function confirmaSenha(string $senha, string $confirmaSenha)
+    {
+        if ($senha == $confirmaSenha)
+            return true;
+
+        return "The password confirmation does not match.";
+    }
+
+    public function verificaSenha(string $senha)
+    {
+        $tamSenha = strlen($senha);
+
+        if(empty($senha))
+            return "The password can not be empty.";
+        if ($tamSenha < 8)
+            return "The password must be at least 8 characters.";
+
+        return true;
+    }
+
+    public function verificaUsername(string $nome)
+    {
+        if(empty($nome))
+            return "The username can not be empty.";
+        else if (strlen($nome) < 3)
+            return "The username must be at least 3 characters.";
+
+        return true;
+
+    }
+
+    public function verificaEmail(string $email)
+    {
+        if(empty($email))
+            return "The email can not be empty.";
+        else if (strlen($email) < 3)
+            return "The email must be at least 3 characters.";
+        else if (!strripos($email, '@'))
+            return "The structure of the indicated email is not valid. Must be like 'exemple@email.com'.";
+        else if (!strripos($email, '.com'))
+            return "The structure of the indicated email is not valid. Must be like 'exemple@email.com'.";
+
+        return true;
+
+    }
 }

@@ -12,7 +12,7 @@ class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        // Busca cindo ultimas series que estão no banco
+        // Busca ultimas series que estão no banco
         $series = Serie::query()->where('finalizada', '=', false)->orderBy('id','desc')->take(5)->get();
         $seriesAssistidas = Serie::query()->where('finalizada', '=', true)->orderBy('id','desc')->take(5)->get();
         // Define as cores de cada to;pico de filme

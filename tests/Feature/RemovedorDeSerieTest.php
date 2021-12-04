@@ -47,4 +47,17 @@ class RemovedorDeSerieTest extends TestCase
         $this->assertEquals('Nome da série', $this->serie->nome);
         $this->assertDatabaseMissing('series', ['id' => $this->serie->id]);
     }
+
+    /**
+     * Teste remove série id inválido.
+     *
+     * @return void
+     */
+    public function testRemoverUmaSerieIdNaoEncontrado()
+    {
+        $removedorDeSerie = new RemovedorDeSeries();
+        $retorno = $removedorDeSerie->removerSerie(1000);
+        $this->assertIsString($retorno);
+        $this->assertSame("Série de id 1000 não encontrada", $retorno);
+    }
 }

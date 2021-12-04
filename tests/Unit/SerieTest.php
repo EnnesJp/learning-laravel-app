@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Models\{Serie, Temporada, Episodio};
+use App\Services\CriadorDeSeries;
 
 class SerieTest extends TestCase
 {
@@ -20,6 +21,7 @@ class SerieTest extends TestCase
         $serie = new Serie();
         $serie->nome = "Serie Test";
         $serie->descricao = "Descricao Test";
+        $serie->genero = "Ação";
         $serie->finalizada = false;
         $temporada1 = new Temporada();
         $temporada2 = new Temporada();
@@ -65,6 +67,17 @@ class SerieTest extends TestCase
     }
 
     /**
+     * Teste para verificar genero da série.
+     *
+     * @return void
+     */
+    public function testGeneroDaSerie()
+    {
+        $generoSerie = $this->serie->genero;
+        $this->assertSame("Ação", $generoSerie);
+    }
+
+    /**
      * Teste para verificar se a série já foi finalizada.
      *
      * @return void
@@ -73,5 +86,125 @@ class SerieTest extends TestCase
     {
         $serieFinalizada = $this->serie->finalizada;
         $this->assertFalse($serieFinalizada);
+    }
+
+    /**
+     * Teste para tentar criar série sem nome.
+     *
+     * @return void
+     */
+    public function testVerificaNomeSerieVazio()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $this->serie->nome = '';
+        $retorno = $criadorDeSerie->verificaNomeSerie($this->serie->nome);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo nome é obrigatório", $retorno);
+    }
+
+    /**
+     * Teste para tentar criar série com nome invalido.
+     *
+     * @return void
+     */
+    public function testVerificaNomeSerieInvalido()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $this->serie->nome = 'Te';
+        $retorno = $criadorDeSerie->verificaNomeSerie($this->serie->nome);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo nome precisa ter pelo menos três caracteres", $retorno);
+    }
+
+    /**
+     * Teste da função verificaNomeSerie.
+     *
+     * @return void
+     */
+    public function testVerificaNomeSerieCorreto()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $retorno = $criadorDeSerie->verificaNomeSerie($this->serie->nome);
+        $this->assertTrue($retorno);
+    }
+
+    /**
+     * Teste para tentar criar série sem descrição.
+     *
+     * @return void
+     */
+    public function testVerificaDescricaoSerieVazio()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $this->serie->descricao = '';
+        $retorno = $criadorDeSerie->verificaDescricaoSerie($this->serie->descricao);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo descricao é obrigatório", $retorno);
+    }
+
+    /**
+     * Teste para tentar criar série com descrição invalida.
+     *
+     * @return void
+     */
+    public function testVerificaDescricaoSerieInvalido()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $this->serie->descricao = 'Te';
+        $retorno = $criadorDeSerie->verificaDescricaoSerie($this->serie->descricao);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo descricao precisa ter pelo menos três caracteres", $retorno);
+    }
+
+    /**
+     * Teste da função verificaDescricaoSerie.
+     *
+     * @return void
+     */
+    public function testVerificaDescricaoSerieCorreto()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $retorno = $criadorDeSerie->verificaDescricaoSerie($this->serie->descricao);
+        $this->assertTrue($retorno);
+    }
+
+    /**
+     * Teste para tentar criar série sem genero.
+     *
+     * @return void
+     */
+    public function testVerificaGeneroSerieVazio()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $this->serie->genero = '';
+        $retorno = $criadorDeSerie->verificaGeneroSerie($this->serie->genero);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo genero é obrigatório", $retorno);
+    }
+
+    /**
+     * Teste para tentar criar série com genero invalido.
+     *
+     * @return void
+     */
+    public function testVerificaGeneroSerieInvalido()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $this->serie->genero = 'Te';
+        $retorno = $criadorDeSerie->verificaGeneroSerie($this->serie->genero);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo genero precisa ter pelo menos três caracteres", $retorno);
+    }
+
+    /**
+     * Teste da função verificaGeneroSerie.
+     *
+     * @return void
+     */
+    public function testVerificaGeneroSerieCorreto()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $retorno = $criadorDeSerie->verificaGeneroSerie($this->serie->genero);
+        $this->assertTrue($retorno);
     }
 }

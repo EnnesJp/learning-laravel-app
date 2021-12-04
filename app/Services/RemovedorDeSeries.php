@@ -15,6 +15,10 @@ class RemovedorDeSeries
 
         DB::beginTransaction();
         $serie = Serie::find($serieId);
+
+        if(empty($serie))
+            return "Série de id ".$serieId." não encontrada";
+
         $nomeSerie = $serie->nome;
         $this->removerTemporadas($serie);
         $serie->delete();

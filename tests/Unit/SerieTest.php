@@ -197,6 +197,88 @@ class SerieTest extends TestCase
     }
 
     /**
+     * Teste da função verificaTemporadasSerie.
+     *
+     * @return void
+     */
+    public function testVerificaNumTempSerieCorreta()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $qtdTemporadas = 1;
+        $retorno = $criadorDeSerie->verificaTemporadasSerie($qtdTemporadas);
+        $this->assertTrue($retorno);
+    }
+
+    /**
+     * Teste para tentar criar série sem temporadas.
+     *
+     * @return void
+     */
+    public function testVerificaNumTempSerieVazio ()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $qtdTemporadas = '';
+        $retorno = $criadorDeSerie->verificaTemporadasSerie($qtdTemporadas);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo quantidade de temporadas é obrigatório", $retorno);
+    }
+
+    /**
+     * Teste para tentar criar série com numero de temporadas invalido.
+     *
+     * @return void
+     */
+    public function testVerificaNumTempSerieInvalido ()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $qtdTemporadas = 'dois';
+        $retorno = $criadorDeSerie->verificaTemporadasSerie($qtdTemporadas);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo quantidade de temporadas deve ser preenchido com um número", $retorno);
+    }
+
+    /**
+     * Teste da função verificaEpisodiosSerie.
+     *
+     * @return void
+     */
+    public function testVerificaNumEpSerieCorreto ()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $qtdEpisodios = 1;
+        $retorno = $criadorDeSerie->verificaEpisodiosSerie($qtdEpisodios);
+        $this->assertTrue($retorno);
+    }
+
+    /**
+     * Teste para tentar criar série sem episodios.
+     *
+     * @return void
+     */
+    public function testVerificaNumEpSerieVazio ()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $qtdEpisodios = '';
+        $retorno = $criadorDeSerie->verificaEpisodiosSerie($qtdEpisodios);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo quantidade de episódios é obrigatório", $retorno);
+    }
+
+    /**
+     * Teste para tentar criar série com numero de episodios invalido.
+     *
+     * @return void
+     */
+    public function testVerificaNumEpoSerieInvalido ()
+    {
+        $criadorDeSerie = new CriadorDeSeries();
+        $qtdEpisodios = 'um';
+        $retorno = $criadorDeSerie->verificaEpisodiosSerie($qtdEpisodios);
+        $this->assertIsString($retorno);
+        $this->assertSame("O campo quantidade de episódios deve ser preenchido com um número", $retorno);
+    }
+
+    /**
      * Teste da função verificaGeneroSerie.
      *
      * @return void

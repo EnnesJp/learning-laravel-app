@@ -20,6 +20,8 @@ class CriadorDeSeries
         $this->verificaNomeSerie($nomeSerie);
         $this->verificaDescricaoSerie($descricao);
         $this->verificaGeneroSerie($genero);
+        $this->verificaTemporadasSerie($qtdTemporadas);
+        $this->verificaEpisodiosSerie($qtdEpisodios);
 
         DB::beginTransaction();
         // Cria nova serie no banco a partir do $request
@@ -68,6 +70,34 @@ class CriadorDeSeries
 
         else if(strlen($genero) < 3)
             return "O campo genero precisa ter pelo menos três caracteres";
+
+        return true;
+    }
+
+    /**
+     * @param string $qtdTemporadas
+     */
+    public function verificaTemporadasSerie(string $qtdTemporadas)
+    {
+        if(empty($qtdTemporadas))
+            return "O campo quantidade de temporadas é obrigatório";
+
+        else if(!is_numeric($qtdTemporadas))
+            return "O campo quantidade de temporadas deve ser preenchido com um número";
+
+        return true;
+    }
+
+    /**
+     * @param string $qtdEpisodios
+     */
+    public function verificaEpisodiosSerie(string $qtdEpisodios)
+    {
+        if(empty($qtdEpisodios))
+            return "O campo quantidade de episódios é obrigatório";
+
+        else if(!is_numeric($qtdEpisodios))
+            return "O campo quantidade de episódios deve ser preenchido com um número";
 
         return true;
     }

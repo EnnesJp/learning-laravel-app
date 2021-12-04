@@ -7,6 +7,8 @@ Este é um pequeno sistema para ajudar a gerenciar suas séries de forma simples
 
 O projeto foi criado inicialmente com objetivo de aprender e praticar a utilização do framework full stack Laravel e desenvolver tanto a lógica da aplicação (em PHP) quanto o front-end (em HTML e CSS). Porém, com a evolução do desenvolvimento, o site foi utilizado também para outras finalidades como, a prática de testes automatizados com PHPUnit e testes E2E com framework Selenium, aprofundar conhecimentos para utilização das ferramentas Composer, para criação de novos projetos, e GitActions, para automatização de testes no GitHub. 
 
+PS: Testes do GitHub Actions feitos apenas em ubunto e mac devido a uma incompatibilidade nos pacotes do composer com windows (Your lock file does not contain a compatible set of packages. Please run composer update.)
+
 ## Author
 
 João Pedro Braga Ennes

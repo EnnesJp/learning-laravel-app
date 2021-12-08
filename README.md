@@ -8,6 +8,8 @@ O projeto foi criado inicialmente com objetivo de aprender e praticar a utiliza�
 
 PS: Testes do GitHub Actions feitos apenas em Ubunto e MacOs devido a uma incompatibilidade nos pacotes do composer com Windows (Your lock file does not contain a compatible set of packages. Please run composer update.)
 
+Adicionato também, geração automatica de relatório de cobertura com GitActions, exportados diretamente para o Codecov. (https://app.codecov.io/gh/EnnesJp/learning-laravel-app/branch/master)
+
 ## Author
 
 João Pedro Braga Ennes
